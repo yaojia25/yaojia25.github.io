@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+    
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="纵有疾风起">
+  <meta name="author" content="Jasyo">
+  <meta name="keywords" content="">
+  <title>从零开始使用 Hexo （1） - yoJo`blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/androidstudio.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+        <body>
+            <!-- 添加黑暗模式 Start Dark Mode -->
+            
+            <div id="xm">
+                <img src="/img/xm.png" srcset="/img/loading.gif">
+            </div>
+            <!-- END -->
+
+            <header style="height: 70vh;">
+                <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>JASYO BLOG</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/example/">
+              <i class="iconfont icon-coolapk"></i>
+              示例</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+                <div class="view intro-2" id="background" parallax=true style="background: url('https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post_banner.png') no-repeat center center;
+                       background-size: cover;">
+                  <div class="full-bg-img">
+                    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+                      <div class="container text-center white-text fadeInUp">
+                        <span class="h2" id="subtitle">
+                          
+                        </span>
+            
+                        
+                        
+                        <div class="mt-3 post-meta">
+                          <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                          <time datetime="2020-04-25 18:05">
+                            星期六, 四月 25日 2020, 6:05 晚上
+                          </time>
+                        </div>
+                        
+            
+                        <div class="mt-1">
+                          
+                          
+                          <span class="post-meta mr-2">
+                            <i class="iconfont icon-chart"></i>
+                            1.4k 字
+                          </span>
+                          
+            
+                          
+                          
+                          <span class="post-meta mr-2">
+                            <i class="iconfont icon-clock-fill"></i>
+                            
+                            
+                            15
+                             分钟
+                          </span>
+                          
+            
+                          
+                        </div>
+                        
+                      </div>
+            
+                      
+                    </div>
+                  </div>
+                </div>
+              </header>
+            
+              <main>
+                
+                
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-warning">
+                本文最后更新于：星期六, 五月 23日 2020, 11:06 上午
+              </p>
+            
+            <article class="markdown-body">
+              <p>人只要一闲下来就喜欢找一点事情做，很久之前就用 Hexo 配合 Github Page 搭建过一个个人主页和博客，但是一直荒废着。正好最近时间比较多，同时发现了一个比较合口味的 Hexo 主题，所以决定重新捡起弃用的 Hexo，并且写下自己的搭建过程。</p>
+<a id="more"></a>
+
+<h2 id="什么是-HEXO？"><a href="#什么是-HEXO？" class="headerlink" title="什么是 HEXO？"></a>什么是 HEXO？</h2><p>在用 hexo 之前我们得先了解 hexo 是什么，引用官方的话就是</p>
+<blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<p>它有着超快速度 ，支持Markdown ，一键部署 ，插件和可扩展性等诸多特点。简单来时就是当我们第一次部署好hexo后，只需专注于自己的写作，后续的步骤全部由hexo来帮助你完成。想了解更多的话可以自行去Hexo的<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官方网站</a>阅读文档。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于我手上暂时拥有的平台是 Windows 10 + WSL2，因为 Hexo 比较轻量化，所以决定在 Windows 环境下使用 Hexo，如果有感兴趣的小伙伴可以跟着我一起搭建属于你自己的博客。</p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>要想使用 Hexo 首先肯定是得安装 Hexo，但是因为 Hexo 依赖于 node.js，因此需要先安装 node.js，加上其他工具的使用，可以先列一个清单</p>
+<ul>
+<li>node.js</li>
+<li>hexo</li>
+<li>git</li>
+<li>Typora（可选）</li>
+<li>VSCode（可选）</li>
+</ul>
+<h4 id="node-js-的安装"><a href="#node-js-的安装" class="headerlink" title="node.js 的安装"></a>node.js 的安装</h4><p>因为 node.js 官方提供了 node.js 的安装程序，因此我们可以前往 node.js 的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官方网站</a>下载 Windwos 的安装程序，进入官网后，我们选择 LTS 版本，这个版本较为稳定，更新频率低。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_nodejs.png" srcset="/img/loading.gif" alt="nodejs的下载"></p>
+<p>下载完成后在资源管理器中找到安装文件双击安装即可。</p>
+<div class="note note-info">
+            <p>安装过程中记得勾选 ADD to PATH 选项，如果忘记勾选的话可以手动将 node.js 的安装目录添加到环境变量中，具体添加教程请自行搜索相关教程。</p>
+          </div>
+
+<h4 id="Git-的安装"><a href="#Git-的安装" class="headerlink" title="Git 的安装"></a>Git 的安装</h4><p>Git我们同样可以选择去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">官方网站</a>下载对应的安装文件安装即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_git.png" srcset="/img/loading.gif" alt="Git的下载"></p>
+<p><strong>TIP：</strong>如果官方网站下载比较慢的话可以去<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝的镜像网站</a>下载。</p>
+<div class="note note-info">
+            <p>和 node.js 的安装一样，安装过程中记得勾选 ADD to PATH 选项，忘记勾选请手动添加环境变量。</p>
+          </div>
+
+<h4 id="Hexo-的安装"><a href="#Hexo-的安装" class="headerlink" title="Hexo 的安装"></a>Hexo 的安装</h4><p>当我们安装好了 node.js 后就可以开始安装 Hexo 了，并且 Hexo 安装非常的简单，仅需一行代码即可实现。我们打开电脑的终端（cmd 或 Powershell），输入 Hexo 安装命令，即可使用 npm 一键安装 Hexo。</p>
+<pre><code class="hljs bash">$ npm install -g hexo-cli</code></pre>
+
+<p>至此，我们所需的环境便搭建完毕，接下来是 Hexo 的简单配置。</p>
+<h2 id="Hexo-工作目录创建"><a href="#Hexo-工作目录创建" class="headerlink" title="Hexo 工作目录创建"></a>Hexo 工作目录创建</h2><p>安装好 Hexo 后我们便可以开始我们愉快的博客之旅。因为 hexo 主要是搭建静态博客，我们可以在本地调试好后再把 Hexo 编译后的静态网页文件放入到我们的 VPS 中，这些都是后面需要做的，因此我开始需要给网页文件找一个家🏡。我们可以在文件管理器中创建一个名为“BLOG”的文件夹，然后将这个文件夹注册为 Hexo 执行的目录，这时我们需要借助终端完成，并在终端中进入到此目录下。终端进入对应的目录有多种方法，最长见的是使用 cd 命令，这里我推荐另外两个比较便携的方法。</p>
+<ol>
+<li><p>在 BLOG 文件夹空白处按住 SHIFT 键，同时点击鼠标右键，此时右键菜单中会出现 “在此处打开 Powershell 窗口”，如下图，点击即可打开 Powershell。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_cmd.png" srcset="/img/loading.gif" alt="Powershell"></p>
+</li>
+<li><p>第二种方法是在 BLOG 文件夹下，在地址栏输入 CMD 或 powershell，然后回车即可打开对应的窗口。</p>
+</li>
+</ol>
+<p>两种方法均可在使终端的运行目录自动切换到 BLOG 目录下。</p>
+<p>接下来在打开的终端中依次输入下列命令</p>
+<pre><code class="hljs bash">$ hexo init
+$ npm install</code></pre>
+
+<p>此时 hexo 会在 BLOG 文件夹生成博客所需要的文件，同时装好博客所需要的各种依赖。文件结构如下所示：</p>
+<pre><code class="hljs plain">BLOG
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+├── themes
+├── _config.yml
+└── package.json</code></pre>
+
+<p>其中各个目录的作用可以参照下表</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件夹及文件</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scaffolds</td>
+<td align="left">该文件下为模板文件，当使用 hexo new 命令创建文件时会用到这些模板</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="left">资源文件夹，博客中用到的资源文件均会存放在此，其中’_‘开头的文件 / 夹会被隐藏忽略</td>
+</tr>
+<tr>
+<td align="left">themes</td>
+<td align="left">存放主题的文件夹</td>
+</tr>
+<tr>
+<td align="left">_config.yml</td>
+<td align="left">博客的全局配置文件</td>
+</tr>
+<tr>
+<td align="left">package.json</td>
+<td align="left">应用程序信息，其中记录了所需的插件</td>
+</tr>
+</tbody></table>
+<h2 id="第一次运行"><a href="#第一次运行" class="headerlink" title="第一次运行"></a>第一次运行</h2><p>注册好 Blog 的文件后我们其实已经可以本地运行服务，并在浏览器中预览博客效果了。我们仅需在终端中执行</p>
+<pre><code class="hljs bash">$ hexo g
+$ hexo s</code></pre>
+
+<p>等待本地服务器运行起来后，打开浏览器，在地址栏中输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 便可预览我们的博客了，因为 Hexo 第一次运行时会自动生成一篇 hello world 的文章，因此我们在网页中可以看到这一篇文章。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，hexo 搭建博客的第一步已经完成了，下一篇我将分享博客的自定义化和一些小技巧。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/github/">github</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%88%86%E4%BA%AB/">分享</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/post/windwos-terminal_3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows Terminal 正式版安裝和配置分享</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/post/test_0/">
+                        <span class="hidden-mobile">虞美人盛开的山坡</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+                
+              </main>
+            
+              
+              <a id="scroll-top-button" href="#" role="button">
+                <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+              </a>
+              
+            
+              
+              <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    <div>
+      <!-- 一言诗词 -->
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+    
+
+    
+
+    
+  </div>
+  </footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "从零开始使用 Hexo （1）&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </body>
+            
+            </html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Windows Terminal 正式版安裝和配置分享</title>
+    <link href="/post/windwos-terminal_3/"/>
+    <url>/post/windwos-terminal_3/</url>
+    
+    <content type="html"><![CDATA[<p>现在都 0202 年了，你还在使用 Windows 默认的大黑窗 CMD 嘛？如果你是使用的 Windows 10 系统，你会发现系统里多了一个 Powershell 的命令行窗口，但是默认的 Powershell 窗口深蓝色的背景加上锯齿感的字体，表面观感也没有比 cmd 好多少。<del>巨硬</del>终于发布了基于 Fluent Design 设计的 Windows Terminal，在用了很长一段时间的预览版后，最近微软终于发布了正式版！这就和我一起配置正式版的 Windows Terminal 吧。</p><a id="more"></a><p>首先展示一下最终效果<br><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_windowsterminal.png" srcset="/img/loading.gif" alt="Windows Terminal"></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>微软这次使用 Fluent Design 设计的全新终端 Windows termianl 因为是开源项目，因此你可以免费使用它。因此，安装它的方法也很多，如果你是使用的 Windows 10 系统，你可以在自带的微软商店中搜索 “Windows termianl”来安装他。</p><p><a class="btn" href="https://www.microsoft.com/store/productId/9N0DX20HK701" target="_blank" rel="noopener" title="微软商店官方页面">📌 Windows Terminal</a></p><p>这种是最简单有效的方法，但是可能很多人无法打开微软商店,亦或是下载速度不理想甚至无法下载,贴心的微软当然还提供安装包安装的方式．我们可以前往 Windows Terminal 的开源仓库 GitHub 中的<a href="https://github.com/microsoft/terminal/releases" target="_blank" rel="noopener"> Releases page </a>中下载离线安装包安装.当然,如果你凑巧使用了 Chocolatey 作为你 Windows 上的包管理器,你同样可以在终端中输入命令进行安装:</p><pre><code class="hljs bash">choco install microsoft-windows-terminal</code></pre><p class="note note-danger">**注意** : 使用 chocolatey 安装是非官方版本不保证兼容性。</p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>当你安装完成后你就可以在开始菜单中找到 Winwows Termianl，打开后就可以看到一个基于 Fluent Desgin 设计的全新终端界面(<del>Awasome</del>😲)。</p><p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_wt.png" srcset="/img/loading.gif" alt="Windows Terminal"></p><p>但是默认的界面也不够完美，因此我们可以通过修改配置文件来使终端慢慢变成我们喜欢 ♥ 的样子!</p><p class="note note-primary">Windows Terminal 的设置是由一个配置文件 setting.json 来管理的，我们只需要修改这个配置文件,就能实现各种效果。微软官方也提供了对应的文档，我们可以<a href="[url](https://docs.microsoft.com/zh-cn/windows/terminal/)">点击这里</a>点击这里进行查看。</p><p>如果你也想要实现本文头图中的效果，那就我一步步修改配置文件来实现吧!</p><blockquote><p>为了方便,后文 Windows Termianl 简称 WT。</p></blockquote><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>首先我们需要点击 WT 标题栏的”+”展开菜单，然后点击设置，会使用默认的文本编辑软件打开 WT 的配置文件 setting.json。</p><p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_wts.png" srcset="/img/loading.gif" alt="进入设置"><br>打开 setting.json 后我们可以发现配置文件的结构为</p><pre><code class="hljs json">&#123;    <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://aka.ms/terminal-profiles-schema"</span>,    <span class="hljs-attr">"defaultProfile"</span>: <span class="hljs-string">"&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;"</span>,    <span class="hljs-comment">//全局配置</span>    <span class="hljs-attr">"profiles"</span>:    &#123;        <span class="hljs-attr">"defaults"</span>:        &#123;            <span class="hljs-comment">// 全局终端配置</span>        &#125;,        <span class="hljs-attr">"list"</span>:        [            &#123;                <span class="hljs-comment">//单独终端配置</span>            &#125;        ]    &#125;,    <span class="hljs-attr">"schemes"</span>: [        &#123;            <span class="hljs-comment">//主题配置</span>        &#125;    ],    <span class="hljs-attr">"keybindings"</span>:    [        &#123;            <span class="hljs-comment">//快捷键配置</span>        &#125;    ]</code></pre><p>了解了配置文件的结构后我们就可以在相应的位置修改配置文件实现相应的效果了。</p><h3 id="终端配置"><a href="#终端配置" class="headerlink" title="终端配置"></a>终端配置</h3><h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>在全局配置中我们可以通过修改默认打开的终端，窗口大小,选取复制等等,配置文件中默认的字段比较少，我们可以按需求添加,删除或修改字段和相应的值。在这里我修改了默认的 “copyOnSelect” 字段，该字段可以修改鼠标选取文字后是否自动复制到剪贴板。修改为 “true” 后，当我们鼠标选取了终端的文字后会自动的复制到剪贴板，相当方便。然后添加了两个字段。</p><pre><code class="hljs json">"wordDelimiters" : " ./\\()\"'-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;~?│","snapToGridOnResize" : true,</code></pre><p>“wordDelimiters” 字段可以设置我们双击选词时断开的位置，你可以修改后面的值来设置当你双击单词时会以什么符号为截点。而 “snapToGridOnResize” 字段可以帮助我们在改变窗口大小时，终端中的内容可以更加平滑的移动。</p><h4 id="全局终端配置"><a href="#全局终端配置" class="headerlink" title="全局终端配置"></a>全局终端配置</h4><p>因为 WT 支持多种端，你可以在 WT 中打开 Powershell，打开 CMD，打开 WSL 等等，因此我们可以单独设置多个终端的配置，当然如果多个终端配置中有相同的配置需求。为了配置文件的简洁，我们可以将这些配置文件写在此处。比如最直观的字体和字体大小，因此我在这里配置字体和字体大小，终端的背景，以及让终端立刻高端的 fluent 效果的背景。相应的配置如下</p><pre><code class="hljs json">"useAcrylic" : true,"fontFace" : "Jetbrains Mono","fontSize" : 10,"backgroundImage": "ms-appdata:///roaming/back.jpg","backgroundImageOpacity" : 0.7,"backgroundImageStretchMode": "uniformToFill"</code></pre><p>＂useAcrylic＂ 字段就控制 fluent 模糊效果的背景，字体大小可以自己设置到自己喜欢的大小，字体我选用的是 Jetbrains 公司的”Jetbrains Mono”字体。＂backgroundImage＂ 字段可以修改终端的背景，路径建议按照我写的相对路径，只需要把背景图片放入。</p><pre><code class="hljs plain">C:\Users\yaojia\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState</code></pre><p>路径中,然后调用地址是 ms-appdata:///roaming/文件名。</p><p>注意修改默认终端时，将配置文件后面你需要的终端的 guid 码复制到”defaultProfile”后即可。</p><p class="note note-primary"><a class="btn" href="https://www.jetbrains.com/zh-cn/lp/mono/" target="_blank" rel="noopener" title="官方下载">🖍 Jetbrains Mono</a><a class="btn" href="https://wallpaperhub.app/wallpapers/4641" target="_blank" rel="noopener" title="官方下载">🖼 Fulent Desgin Wallpaper</a></p><h4 id="单独终端配置"><a href="#单独终端配置" class="headerlink" title="单独终端配置"></a>单独终端配置</h4><p>由于我常用的 Windwos 终端为 Powershell，因此我主要配置的时 Ｐowershell，其他的同理。而 Azure Cloud Shell 暂时用不到，我们可以在相应的配置地方将”hide”值设置为 true，这样在标题栏选择终端的时候就不会 Azure Cloud Shell 的选项，算是一个强迫症设置。</p><p>在 Powershell 的配置中我主要是去掉了 Powershell 的版权声明，就是每次打开终端，最先出现的那几行内容。去掉的方式也很简单，只需要在启动参数后面加上”-nologo”的命令即可。然后将光标修改为 vintage 样式，其他的样式可以官方文档中查看。最后将主题设置为 Dark+,这个主题需要在后面进行配置。</p><pre><code class="hljs json">"commandline": "powershell.exe -nologo","colorScheme" : "Dark+","cursorShape" : "vintage",</code></pre><h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4><p>由于前面终端配置中调用了 Dark+主题，因此需要在这里写入主题配置，直接复制我的到相应位置即可。</p><pre><code class="hljs json">&#123;  <span class="hljs-attr">"black"</span>: <span class="hljs-string">"#000000"</span>,  <span class="hljs-attr">"green"</span>: <span class="hljs-string">"#0dbc79"</span>,  <span class="hljs-attr">"red"</span>: <span class="hljs-string">"#cd3131"</span>,  <span class="hljs-attr">"yellow"</span>: <span class="hljs-string">"#e5e510"</span>,  <span class="hljs-attr">"blue"</span>: <span class="hljs-string">"#2472c8"</span>,  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Dark+"</span>,  <span class="hljs-attr">"purple"</span>: <span class="hljs-string">"#bc3fbc"</span>,  <span class="hljs-attr">"cyan"</span>: <span class="hljs-string">"#11a8cd"</span>,  <span class="hljs-attr">"white"</span>: <span class="hljs-string">"#e5e5e5"</span>,  <span class="hljs-attr">"brightBlack"</span>: <span class="hljs-string">"#666666"</span>,  <span class="hljs-attr">"brightRed"</span>: <span class="hljs-string">"#f14c4c"</span>,  <span class="hljs-attr">"brightGreen"</span>: <span class="hljs-string">"#23d18b"</span>,  <span class="hljs-attr">"brightYellow"</span>: <span class="hljs-string">"#f5f543"</span>,  <span class="hljs-attr">"brightBlue"</span>: <span class="hljs-string">"#3b8eea"</span>,  <span class="hljs-attr">"brightPurple"</span>: <span class="hljs-string">"#d670d6"</span>,  <span class="hljs-attr">"brightCyan"</span>: <span class="hljs-string">"#29b8db"</span>,  <span class="hljs-attr">"brightWhite"</span>: <span class="hljs-string">"#e5e5e5"</span>,  <span class="hljs-attr">"background"</span>: <span class="hljs-string">"#0e0e0e"</span>,  <span class="hljs-attr">"foreground"</span>: <span class="hljs-string">"#cccccc"</span>&#125;</code></pre><h4 id="快捷键配置"><a href="#快捷键配置" class="headerlink" title="快捷键配置"></a>快捷键配置</h4><p>快捷键配置没有什么好说的，如果你习惯快捷键操作可以根据官方文档进行配置，我仅仅修改了搜索的快捷键。原本是 ctrl+shift+F，我修改成了常用的 ctrl+F。</p><h3 id="Powerline-配置"><a href="#Powerline-配置" class="headerlink" title="Powerline 配置"></a>Powerline 配置</h3><p>完成以上步骤后，终端就已经被美化得差不多了。你可能会问为什么我的终端内容和你的咋不一样，那是因为我配置了 Powershell 插件,也就是 powerline 设置，具体的配置网上我就不说了，各位可以百度有很多的教程。我这里贴上一个官方的教程地址。</p><p><a class="btn" href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup" target="_blank" rel="noopener" title="官方下载">Powerline 配置</a></p><h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><p>Windows Termianl 可以使用命令 “wt” 调用,比较常见的一个调用方法时 wt -d 目录地址可以打开 Windows termianl 并 cd 到对应的目录。通过这个我们可以在资源管理器的地址中输入</p><pre><code class="hljs bash">wt -d .</code></pre><p>即可在当前目录打开 Windows Termianl。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>教程</tag>
+      
+      <tag>分享</tag>
+      
+      <tag>Terminal</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>从零开始使用 Hexo （1）</title>
+    <link href="/post/Hexo-share1_1/"/>
+    <url>/post/Hexo-share1_1/</url>
+    
+    <content type="html"><![CDATA[<p>人只要一闲下来就喜欢找一点事情做，很久之前就用 Hexo 配合 Github Page 搭建过一个个人主页和博客，但是一直荒废着。正好最近时间比较多，同时发现了一个比较合口味的 Hexo 主题，所以决定重新捡起弃用的 Hexo，并且写下自己的搭建过程。</p><a id="more"></a><h2 id="什么是-HEXO？"><a href="#什么是-HEXO？" class="headerlink" title="什么是 HEXO？"></a>什么是 HEXO？</h2><p>在用 hexo 之前我们得先了解 hexo 是什么，引用官方的话就是</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p></blockquote><p>它有着超快速度 ，支持Markdown ，一键部署 ，插件和可扩展性等诸多特点。简单来时就是当我们第一次部署好hexo后，只需专注于自己的写作，后续的步骤全部由hexo来帮助你完成。想了解更多的话可以自行去Hexo的<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官方网站</a>阅读文档。</p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于我手上暂时拥有的平台是 Windows 10 + WSL2，因为 Hexo 比较轻量化，所以决定在 Windows 环境下使用 Hexo，如果有感兴趣的小伙伴可以跟着我一起搭建属于你自己的博客。</p><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>要想使用 Hexo 首先肯定是得安装 Hexo，但是因为 Hexo 依赖于 node.js，因此需要先安装 node.js，加上其他工具的使用，可以先列一个清单</p><ul><li>node.js</li><li>hexo</li><li>git</li><li>Typora（可选）</li><li>VSCode（可选）</li></ul><h4 id="node-js-的安装"><a href="#node-js-的安装" class="headerlink" title="node.js 的安装"></a>node.js 的安装</h4><p>因为 node.js 官方提供了 node.js 的安装程序，因此我们可以前往 node.js 的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官方网站</a>下载 Windwos 的安装程序，进入官网后，我们选择 LTS 版本，这个版本较为稳定，更新频率低。</p><p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_nodejs.png" srcset="/img/loading.gif" alt="nodejs的下载"></p><p>下载完成后在资源管理器中找到安装文件双击安装即可。</p><div class="note note-info">            <p>安装过程中记得勾选 ADD to PATH 选项，如果忘记勾选的话可以手动将 node.js 的安装目录添加到环境变量中，具体添加教程请自行搜索相关教程。</p>          </div><h4 id="Git-的安装"><a href="#Git-的安装" class="headerlink" title="Git 的安装"></a>Git 的安装</h4><p>Git我们同样可以选择去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">官方网站</a>下载对应的安装文件安装即可。</p><p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_git.png" srcset="/img/loading.gif" alt="Git的下载"></p><p><strong>TIP：</strong>如果官方网站下载比较慢的话可以去<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝的镜像网站</a>下载。</p><div class="note note-info">            <p>和 node.js 的安装一样，安装过程中记得勾选 ADD to PATH 选项，忘记勾选请手动添加环境变量。</p>          </div><h4 id="Hexo-的安装"><a href="#Hexo-的安装" class="headerlink" title="Hexo 的安装"></a>Hexo 的安装</h4><p>当我们安装好了 node.js 后就可以开始安装 Hexo 了，并且 Hexo 安装非常的简单，仅需一行代码即可实现。我们打开电脑的终端（cmd 或 Powershell），输入 Hexo 安装命令，即可使用 npm 一键安装 Hexo。</p><pre><code class="hljs bash">$ npm install -g hexo-cli</code></pre><p>至此，我们所需的环境便搭建完毕，接下来是 Hexo 的简单配置。</p><h2 id="Hexo-工作目录创建"><a href="#Hexo-工作目录创建" class="headerlink" title="Hexo 工作目录创建"></a>Hexo 工作目录创建</h2><p>安装好 Hexo 后我们便可以开始我们愉快的博客之旅。因为 hexo 主要是搭建静态博客，我们可以在本地调试好后再把 Hexo 编译后的静态网页文件放入到我们的 VPS 中，这些都是后面需要做的，因此我开始需要给网页文件找一个家🏡。我们可以在文件管理器中创建一个名为“BLOG”的文件夹，然后将这个文件夹注册为 Hexo 执行的目录，这时我们需要借助终端完成，并在终端中进入到此目录下。终端进入对应的目录有多种方法，最长见的是使用 cd 命令，这里我推荐另外两个比较便携的方法。</p><ol><li><p>在 BLOG 文件夹空白处按住 SHIFT 键，同时点击鼠标右键，此时右键菜单中会出现 “在此处打开 Powershell 窗口”，如下图，点击即可打开 Powershell。</p><p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/post1_cmd.png" srcset="/img/loading.gif" alt="Powershell"></p></li><li><p>第二种方法是在 BLOG 文件夹下，在地址栏输入 CMD 或 powershell，然后回车即可打开对应的窗口。</p></li></ol><p>两种方法均可在使终端的运行目录自动切换到 BLOG 目录下。</p><p>接下来在打开的终端中依次输入下列命令</p><pre><code class="hljs bash">$ hexo init$ npm install</code></pre><p>此时 hexo 会在 BLOG 文件夹生成博客所需要的文件，同时装好博客所需要的各种依赖。文件结构如下所示：</p><pre><code class="hljs plain">BLOG├── scaffolds├── source|   ├── _drafts|   └── _posts├── themes├── _config.yml└── package.json</code></pre><p>其中各个目录的作用可以参照下表</p><table><thead><tr><th align="left">文件夹及文件</th><th align="left">作用</th></tr></thead><tbody><tr><td align="left">scaffolds</td><td align="left">该文件下为模板文件，当使用 hexo new 命令创建文件时会用到这些模板</td></tr><tr><td align="left">source</td><td align="left">资源文件夹，博客中用到的资源文件均会存放在此，其中’_‘开头的文件 / 夹会被隐藏忽略</td></tr><tr><td align="left">themes</td><td align="left">存放主题的文件夹</td></tr><tr><td align="left">_config.yml</td><td align="left">博客的全局配置文件</td></tr><tr><td align="left">package.json</td><td align="left">应用程序信息，其中记录了所需的插件</td></tr></tbody></table><h2 id="第一次运行"><a href="#第一次运行" class="headerlink" title="第一次运行"></a>第一次运行</h2><p>注册好 Blog 的文件后我们其实已经可以本地运行服务，并在浏览器中预览博客效果了。我们仅需在终端中执行</p><pre><code class="hljs bash">$ hexo g$ hexo s</code></pre><p>等待本地服务器运行起来后，打开浏览器，在地址栏中输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 便可预览我们的博客了，因为 Hexo 第一次运行时会自动生成一篇 hello world 的文章，因此我们在网页中可以看到这一篇文章。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，hexo 搭建博客的第一步已经完成了，下一篇我将分享博客的自定义化和一些小技巧。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>github</tag>
+      
+      <tag>教程</tag>
+      
+      <tag>分享</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>虞美人盛开的山坡</title>
+    <link href="/post/test_0/"/>
+    <url>/post/test_0/</url>
+    
+    <content type="html"><![CDATA[<p> HEXO 部署调试测试文章</p> <a id="more"></a><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p> 乡村的夜晚总是带着一股子的宁静温和，我很喜欢在温馨阒静的夜色里享受时光，大抵是小时候养成的习惯吧！幼年时，每到夏夜总是我最放松的时刻。“从前的日子很慢。车，马，邮件都慢”，没有电视和手机，只有大自然相伴的时光是惬意无比的。那时候左邻右舍每到夜晚都聚在院子里聊天、赏月，日子波澜不惊，却多了和谐温馨。</p><h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><p> <img src="https://p3.music.126.net/sIxHgVEs8a3A4kLF51jYzA==/109951163176662492.jpg?param=640y300" srcset="/img/loading.gif" alt="Music"><br> 三毛说：“岁月极美，在于它必然地流逝，春花、秋月、夏日、冬雪”，如今明白，确实如此！儿时观月，就真的只是单纯地识月，不知愁苦，不问悲欢；中年观月，也作窥月，忙碌中寻得的闲暇亦是难得；暮年观月，也为望月，知半生所得，望半生所失。但岁月流逝间我们所经历的都是极美的场景。</p><p> <img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post-imgs/20200508151917.png" srcset="/img/loading.gif" alt="alt"></p><p><img src="https://img.shields.io/badge/dynamic/json?color=FF69B4&label=Bilibili&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%2F%3Fsource%3Dbilibili%26queryKey%3D15261511" srcset="/img/loading.gif" alt="bilibili"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>test</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>

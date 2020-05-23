@@ -1,0 +1,236 @@
+/* 首页图片放大动画 */
+
+.index-img {
+  transition: 0.4s;
+}
+
+.index-card:hover .index-img {
+  transform: scale(1.1);
+  /* box-shadow: 0 0 0 0 rgba(0, 0, 0, .18), 0 0 0 0 rgba(0, 0, 0, .15) */
+}
+/* 想在手机端也显示，去除最外层的 @media，并更改缩进 */
+
+@media (min-width: 768px) {
+  .post-content h1::before,
+  .post-content h2::before,
+  .post-content h3::before,
+  .post-content h4::before {
+    visibility: visible;
+    display: inline;
+  }
+  .post-content h1::before {
+    content: "🌈";
+  }
+  .post-content h2::before {
+    content: "🚀";
+  }
+  .post-content h3::before {
+    content: "🔍";
+  }
+  .post-content h4::before {
+    content: "⛅";
+  }
+}
+
+@font-face {
+  font-family: Edo-SZ;
+  src: url(https://cdn.repository.webfont.com/webfonts/nomal/137874/47808/5eaabf40f629d81078598586.gif?r=136641985022);
+  src: url(https://cdn.repository.webfont.com/webfonts/nomal/137874/47808/5eaabf40f629d81078598586.gif?r=136641985022?#iefix)
+      format("embedded-opentype"),
+    url(https://cdn.repository.webfont.com/webfonts/nomal/137874/47808/5eaabf40f629d81078598586.png?r=136641985022)
+      format("woff2"),
+    url(https://cdn.repository.webfont.com/webfonts/nomal/137874/47808/5eaabf40f629d81078598586.bmp?r=136641985022)
+      format("woff"),
+    url(https://cdn.repository.webfont.com/webfonts/nomal/137874/47808/5eaabf40f629d81078598586.jpg?r=136641985022)
+      format("truetype");
+}
+
+.about-name,
+.navbar-brand strong {
+  font-family: Edo-SZ;
+  font-weight: 400;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  padding: 0.1rem;
+  margin: -5px 0 -5px 0;
+}
+
+.navbar-col-show,
+.top-nav-collapse {
+  background: rgba(47, 65, 84, 0.8);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+/* 黑暗模式 */
+/* 切换按钮 */
+
+#dark {
+  cursor: pointer;
+  position: fixed;
+  right: 40px;
+  bottom: 98px;
+  width: 16px;
+  height: 14px;
+  z-index: 100;
+  font-size: 20px;
+}
+/***********暗黑模式*************/
+
+.dark {
+  background-color: #282c34;
+}
+
+.dark .mask {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+/* 背景遮罩 */
+
+.dark #board {
+  background-color: #282c34;
+  color: #a09c9c;
+}
+/* 主体 */
+
+.dark img {
+  filter: brightness(50%);
+  /* 图片亮度 */
+}
+
+.dark p,
+.dark .index-info a {
+  color: #a09c9c !important;
+}
+
+.dark .markdown-body h1,
+.dark .markdown-body h2,
+.dark .markdown-body h3,
+.dark .markdown-body h4,
+.dark .markdown-body h5,
+.dark .markdown-body h6,
+.dark .markdown-body s,
+.dark .markdown-body li {
+  color: #a09c9c !important;
+}
+
+.dark .navbar-col-show,
+.dark .top-nav-collapse {
+  background-color: #282c34;
+}
+/* 顶栏 */
+
+.dark .navbar a {
+  color: #a09c9c !important;
+}
+
+.dark .animated-icon span {
+  background-color: #a09c9c;
+  /* 手机端 */
+}
+
+.dark .pagination a:hover,
+.dark .pagination .current {
+  background-color: rgba(107, 107, 107, 0.451);
+}
+/* Page-number */
+
+.dark #subtitle,
+.dark .dark.typed-cursor--blink,
+.dark .scroll-down-arrow {
+  color: #dfdfdf;
+}
+/* 打字机 */
+
+.dark #scroll-top-button {
+  background-color: #282c34;
+}
+
+.dark #scroll-top-button i {
+  color: #a09c9c;
+}
+/* back to top */
+
+.dark .tocbot-list a {
+  color: #a09c9c;
+}
+
+.dark .tocbot-active-link,
+.dark footer a:hover {
+  color: #1abc9c !important;
+}
+/* Toc */
+
+.dark footer,
+.dark footer a {
+  color: #a09c9c;
+}
+/* footer */
+
+.dark .list-group-item {
+  color: #a09c9c;
+  background-color: #282c34;
+}
+
+.dark .list-group-item:hover,
+.dark .tagcloud a:hover {
+  background-color: #46484d;
+}
+/* 归档页 */
+
+.dark .links .card {
+  background-color: #282c34;
+}
+
+.dark .links .card-body:hover {
+  background-color: #46484d;
+}
+
+.dark .links .link-title,
+.dark .links .link-intro {
+  color: #a09c9c;
+}
+/* 友链页 */
+
+.dark .note-info {
+  background-color: #3b5359;
+  border-color: #006d80;
+}
+
+.dark .note-danger {
+  background-color: #783f42;
+  border-color: #670009;
+}
+
+.dark .note-success {
+  background-color: #2a3e2e;
+  border-color: #005915;
+}
+
+.dark .note-warning {
+  background-color: #5b543e;
+  border-color: #846500;
+}
+
+.dark .note-primary {
+  background-color: #455a6f;
+  border-color: #004188;
+}
+/* note标签 配色有点丑 */
+/* 结束-黑暗模式 */
+#xm {
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(3px);
+}
+#xm:hover {
+  transform: translateY(0);
+}
+#xm img {
+  width: 50px;
+}

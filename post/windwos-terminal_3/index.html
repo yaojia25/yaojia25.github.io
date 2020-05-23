@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+    
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="纵有疾风起">
+  <meta name="author" content="Jasyo">
+  <meta name="keywords" content="">
+  <title>Windows Terminal 正式版安裝和配置分享 - yoJo`blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/androidstudio.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+        <body>
+            <!-- 添加黑暗模式 Start Dark Mode -->
+            
+            <div id="xm">
+                <img src="/img/xm.png" srcset="/img/loading.gif">
+            </div>
+            <!-- END -->
+
+            <header style="height: 70vh;">
+                <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>JASYO BLOG</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/example/">
+              <i class="iconfont icon-coolapk"></i>
+              示例</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+                <div class="view intro-2" id="background" parallax=true style="background: url('https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting/post_banner.png') no-repeat center center;
+                       background-size: cover;">
+                  <div class="full-bg-img">
+                    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+                      <div class="container text-center white-text fadeInUp">
+                        <span class="h2" id="subtitle">
+                          
+                        </span>
+            
+                        
+                        
+                        <div class="mt-3 post-meta">
+                          <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                          <time datetime="2020-05-23 15:18">
+                            星期六, 五月 23日 2020, 3:18 下午
+                          </time>
+                        </div>
+                        
+            
+                        <div class="mt-1">
+                          
+                          
+                          <span class="post-meta mr-2">
+                            <i class="iconfont icon-chart"></i>
+                            1.8k 字
+                          </span>
+                          
+            
+                          
+                          
+                          <span class="post-meta mr-2">
+                            <i class="iconfont icon-clock-fill"></i>
+                            
+                            
+                            20
+                             分钟
+                          </span>
+                          
+            
+                          
+                        </div>
+                        
+                      </div>
+            
+                      
+                    </div>
+                  </div>
+                </div>
+              </header>
+            
+              <main>
+                
+                
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-warning">
+                本文最后更新于：星期六, 五月 23日 2020, 11:06 上午
+              </p>
+            
+            <article class="markdown-body">
+              <p>现在都 0202 年了，你还在使用 Windows 默认的大黑窗 CMD 嘛？如果你是使用的 Windows 10 系统，你会发现系统里多了一个 Powershell 的命令行窗口，但是默认的 Powershell 窗口深蓝色的背景加上锯齿感的字体，表面观感也没有比 cmd 好多少。<del>巨硬</del>终于发布了基于 Fluent Design 设计的 Windows Terminal，在用了很长一段时间的预览版后，最近微软终于发布了正式版！这就和我一起配置正式版的 Windows Terminal 吧。</p>
+<a id="more"></a>
+
+<p>首先展示一下最终效果<br><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_windowsterminal.png" srcset="/img/loading.gif" alt="Windows Terminal"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>微软这次使用 Fluent Design 设计的全新终端 Windows termianl 因为是开源项目，因此你可以免费使用它。因此，安装它的方法也很多，如果你是使用的 Windows 10 系统，你可以在自带的微软商店中搜索 “Windows termianl”来安装他。</p>
+<p><a class="btn" href="https://www.microsoft.com/store/productId/9N0DX20HK701" target="_blank" rel="noopener" title="微软商店官方页面">📌 Windows Terminal</a></p>
+<p>这种是最简单有效的方法，但是可能很多人无法打开微软商店,亦或是下载速度不理想甚至无法下载,贴心的微软当然还提供安装包安装的方式．我们可以前往 Windows Terminal 的开源仓库 GitHub 中的<a href="https://github.com/microsoft/terminal/releases" target="_blank" rel="noopener"> Releases page </a>中下载离线安装包安装.当然,如果你凑巧使用了 Chocolatey 作为你 Windows 上的包管理器,你同样可以在终端中输入命令进行安装:</p>
+<pre><code class="hljs bash">choco install microsoft-windows-terminal</code></pre>
+
+<p class="note note-danger">
+**注意** : 使用 chocolatey 安装是非官方版本不保证兼容性。
+</p>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>当你安装完成后你就可以在开始菜单中找到 Winwows Termianl，打开后就可以看到一个基于 Fluent Desgin 设计的全新终端界面(<del>Awasome</del>😲)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_wt.png" srcset="/img/loading.gif" alt="Windows Terminal"></p>
+<p>但是默认的界面也不够完美，因此我们可以通过修改配置文件来使终端慢慢变成我们喜欢 ♥ 的样子!</p>
+<p class="note note-primary">
+Windows Terminal 的设置是由一个配置文件 setting.json 来管理的，我们只需要修改这个配置文件,就能实现各种效果。
+微软官方也提供了对应的文档，我们可以<a href="[url](https://docs.microsoft.com/zh-cn/windows/terminal/)">点击这里</a>点击这里进行查看。
+</p>
+
+<p>如果你也想要实现本文头图中的效果，那就我一步步修改配置文件来实现吧!</p>
+<blockquote>
+<p>为了方便,后文 Windows Termianl 简称 WT。</p>
+</blockquote>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>首先我们需要点击 WT 标题栏的”+”展开菜单，然后点击设置，会使用默认的文本编辑软件打开 WT 的配置文件 setting.json。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yaojia25/ImgsHosting//post-imgs/post3_wts.png" srcset="/img/loading.gif" alt="进入设置"><br>打开 setting.json 后我们可以发现配置文件的结构为</p>
+<pre><code class="hljs json">&#123;
+    <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://aka.ms/terminal-profiles-schema"</span>,
+    <span class="hljs-attr">"defaultProfile"</span>: <span class="hljs-string">"&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;"</span>,
+
+    <span class="hljs-comment">//全局配置</span>
+
+    <span class="hljs-attr">"profiles"</span>:
+    &#123;
+        <span class="hljs-attr">"defaults"</span>:
+        &#123;
+            <span class="hljs-comment">// 全局终端配置</span>
+        &#125;,
+        <span class="hljs-attr">"list"</span>:
+        [
+            &#123;
+                <span class="hljs-comment">//单独终端配置</span>
+            &#125;
+        ]
+    &#125;,
+    <span class="hljs-attr">"schemes"</span>: [
+        &#123;
+            <span class="hljs-comment">//主题配置</span>
+        &#125;
+    ],
+    <span class="hljs-attr">"keybindings"</span>:
+    [
+        &#123;
+            <span class="hljs-comment">//快捷键配置</span>
+        &#125;
+    ]</code></pre>
+
+<p>了解了配置文件的结构后我们就可以在相应的位置修改配置文件实现相应的效果了。</p>
+<h3 id="终端配置"><a href="#终端配置" class="headerlink" title="终端配置"></a>终端配置</h3><h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>在全局配置中我们可以通过修改默认打开的终端，窗口大小,选取复制等等,配置文件中默认的字段比较少，我们可以按需求添加,删除或修改字段和相应的值。在这里我修改了默认的 “copyOnSelect” 字段，该字段可以修改鼠标选取文字后是否自动复制到剪贴板。修改为 “true” 后，当我们鼠标选取了终端的文字后会自动的复制到剪贴板，相当方便。然后添加了两个字段。</p>
+<pre><code class="hljs json">"wordDelimiters" : " ./\\()\"'-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;~?│",
+"snapToGridOnResize" : true,</code></pre>
+
+<p>“wordDelimiters” 字段可以设置我们双击选词时断开的位置，你可以修改后面的值来设置当你双击单词时会以什么符号为截点。而 “snapToGridOnResize” 字段可以帮助我们在改变窗口大小时，终端中的内容可以更加平滑的移动。</p>
+<h4 id="全局终端配置"><a href="#全局终端配置" class="headerlink" title="全局终端配置"></a>全局终端配置</h4><p>因为 WT 支持多种端，你可以在 WT 中打开 Powershell，打开 CMD，打开 WSL 等等，因此我们可以单独设置多个终端的配置，当然如果多个终端配置中有相同的配置需求。为了配置文件的简洁，我们可以将这些配置文件写在此处。比如最直观的字体和字体大小，因此我在这里配置字体和字体大小，终端的背景，以及让终端立刻高端的 fluent 效果的背景。相应的配置如下</p>
+<pre><code class="hljs json">"useAcrylic" : true,
+"fontFace" : "Jetbrains Mono",
+"fontSize" : 10,
+"backgroundImage": "ms-appdata:///roaming/back.jpg",
+"backgroundImageOpacity" : 0.7,
+"backgroundImageStretchMode": "uniformToFill"</code></pre>
+
+<p>＂useAcrylic＂ 字段就控制 fluent 模糊效果的背景，字体大小可以自己设置到自己喜欢的大小，字体我选用的是 Jetbrains 公司的”Jetbrains Mono”字体。＂backgroundImage＂ 字段可以修改终端的背景，路径建议按照我写的相对路径，只需要把背景图片放入。</p>
+<pre><code class="hljs plain">C:\Users\yaojia\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState</code></pre>
+
+<p>路径中,然后调用地址是 ms-appdata:///roaming/文件名。</p>
+<p>注意修改默认终端时，将配置文件后面你需要的终端的 guid 码复制到”defaultProfile”后即可。</p>
+<p class="note note-primary">
+<a class="btn" href="https://www.jetbrains.com/zh-cn/lp/mono/" target="_blank" rel="noopener" title="官方下载">🖍 Jetbrains Mono</a>
+<a class="btn" href="https://wallpaperhub.app/wallpapers/4641" target="_blank" rel="noopener" title="官方下载">🖼 Fulent Desgin Wallpaper</a>
+</p>
+
+<h4 id="单独终端配置"><a href="#单独终端配置" class="headerlink" title="单独终端配置"></a>单独终端配置</h4><p>由于我常用的 Windwos 终端为 Powershell，因此我主要配置的时 Ｐowershell，其他的同理。而 Azure Cloud Shell 暂时用不到，我们可以在相应的配置地方将”hide”值设置为 true，这样在标题栏选择终端的时候就不会 Azure Cloud Shell 的选项，算是一个强迫症设置。</p>
+<p>在 Powershell 的配置中我主要是去掉了 Powershell 的版权声明，就是每次打开终端，最先出现的那几行内容。去掉的方式也很简单，只需要在启动参数后面加上”-nologo”的命令即可。然后将光标修改为 vintage 样式，其他的样式可以官方文档中查看。最后将主题设置为 Dark+,这个主题需要在后面进行配置。</p>
+<pre><code class="hljs json">"commandline": "powershell.exe -nologo",
+"colorScheme" : "Dark+",
+"cursorShape" : "vintage",</code></pre>
+
+<h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4><p>由于前面终端配置中调用了 Dark+主题，因此需要在这里写入主题配置，直接复制我的到相应位置即可。</p>
+<pre><code class="hljs json">&#123;
+  <span class="hljs-attr">"black"</span>: <span class="hljs-string">"#000000"</span>,
+  <span class="hljs-attr">"green"</span>: <span class="hljs-string">"#0dbc79"</span>,
+  <span class="hljs-attr">"red"</span>: <span class="hljs-string">"#cd3131"</span>,
+  <span class="hljs-attr">"yellow"</span>: <span class="hljs-string">"#e5e510"</span>,
+  <span class="hljs-attr">"blue"</span>: <span class="hljs-string">"#2472c8"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Dark+"</span>,
+  <span class="hljs-attr">"purple"</span>: <span class="hljs-string">"#bc3fbc"</span>,
+  <span class="hljs-attr">"cyan"</span>: <span class="hljs-string">"#11a8cd"</span>,
+  <span class="hljs-attr">"white"</span>: <span class="hljs-string">"#e5e5e5"</span>,
+  <span class="hljs-attr">"brightBlack"</span>: <span class="hljs-string">"#666666"</span>,
+  <span class="hljs-attr">"brightRed"</span>: <span class="hljs-string">"#f14c4c"</span>,
+  <span class="hljs-attr">"brightGreen"</span>: <span class="hljs-string">"#23d18b"</span>,
+  <span class="hljs-attr">"brightYellow"</span>: <span class="hljs-string">"#f5f543"</span>,
+  <span class="hljs-attr">"brightBlue"</span>: <span class="hljs-string">"#3b8eea"</span>,
+  <span class="hljs-attr">"brightPurple"</span>: <span class="hljs-string">"#d670d6"</span>,
+  <span class="hljs-attr">"brightCyan"</span>: <span class="hljs-string">"#29b8db"</span>,
+  <span class="hljs-attr">"brightWhite"</span>: <span class="hljs-string">"#e5e5e5"</span>,
+  <span class="hljs-attr">"background"</span>: <span class="hljs-string">"#0e0e0e"</span>,
+  <span class="hljs-attr">"foreground"</span>: <span class="hljs-string">"#cccccc"</span>
+&#125;</code></pre>
+
+<h4 id="快捷键配置"><a href="#快捷键配置" class="headerlink" title="快捷键配置"></a>快捷键配置</h4><p>快捷键配置没有什么好说的，如果你习惯快捷键操作可以根据官方文档进行配置，我仅仅修改了搜索的快捷键。原本是 ctrl+shift+F，我修改成了常用的 ctrl+F。</p>
+<h3 id="Powerline-配置"><a href="#Powerline-配置" class="headerlink" title="Powerline 配置"></a>Powerline 配置</h3><p>完成以上步骤后，终端就已经被美化得差不多了。你可能会问为什么我的终端内容和你的咋不一样，那是因为我配置了 Powershell 插件,也就是 powerline 设置，具体的配置网上我就不说了，各位可以百度有很多的教程。我这里贴上一个官方的教程地址。</p>
+<p><a class="btn" href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup" target="_blank" rel="noopener" title="官方下载">Powerline 配置</a></p>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><p>Windows Termianl 可以使用命令 “wt” 调用,比较常见的一个调用方法时 wt -d 目录地址可以打开 Windows termianl 并 cd 到对应的目录。通过这个我们可以在资源管理器的地址中输入</p>
+<pre><code class="hljs bash">wt -d .</code></pre>
+
+<p>即可在当前目录打开 Windows Termianl。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%88%86%E4%BA%AB/">分享</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Terminal/">Terminal</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/post/Hexo-share1_1/">
+                        <span class="hidden-mobile">从零开始使用 Hexo （1）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+                
+              </main>
+            
+              
+              <a id="scroll-top-button" href="#" role="button">
+                <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+              </a>
+              
+            
+              
+              <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+              
+            
+              
+            
+              
+            
+              <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    <div>
+      <!-- 一言诗词 -->
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+    
+
+    
+
+    
+  </div>
+  </footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Windows Terminal 正式版安裝和配置分享&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </body>
+            
+            </html>
